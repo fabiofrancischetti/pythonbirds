@@ -2,19 +2,21 @@ from builtins import print
 
 
 class Pessoa:
-    def __init__(self, nome=None, idade=39):
+    def __init__(self, *filhos, nome=None, idade=39):
         self.idade = idade
         self.nome = nome
+        self.filhos = list(filhos)
 
     def cumprimentar(self):
         return f'Olá {id(self)}'
 
 if __name__ == '__main__':
-    p = Pessoa('Luciano')
-    print(Pessoa.cumprimentar(p))
-    print(id(p))
-    print(p.cumprimentar())
-    print(p.nome)
-    p.nome = 'Fabio'
-    print(p.nome)
-    print(p.idade)
+    yasmin = Pessoa(nome='Yasmin')
+    fabio = Pessoa(yasmin, nome='Fabio')
+    print(Pessoa.cumprimentar(fabio))
+    print(id(fabio))
+    print(fabio.cumprimentar())
+    print(fabio.nome)
+    print(fabio.idade)
+    for filho in fabio.filhos:
+        print(filho.nome)
